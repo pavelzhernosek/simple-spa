@@ -27,9 +27,6 @@ export default {
     },
     isUserLoggedIn(state) {
       return state.token !== null;
-    },
-    getUserId(state) {
-      return state.user.id;
     }
   }
 };

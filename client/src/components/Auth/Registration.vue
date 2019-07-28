@@ -14,7 +14,7 @@
             ></v-text-field>
             <v-text-field
               id="password"
-              prepend-icon="mdi-lock-outline"
+              prepend-icon="mdi-key"
               name="password"
               label="Password"
               :rules="passwordRules"
@@ -23,7 +23,7 @@
             ></v-text-field>
             <v-text-field
               id="confirmPassword"
-              prepend-icon="mdi-lock-outline"
+              prepend-icon="mdi-key"
               name="confirm-password"
               label="Confirm Password"
               :rules="confirmPasswordRules"
@@ -32,8 +32,8 @@
             ></v-text-field>
           </v-form>
           <br />
-          <v-btn color="primary" @click="" :disabled="!valid">
-            Login
+          <v-btn color="primary" @click="registration" :disabled="!valid">
+            Create account
           </v-btn>
         </v-flex>
       </panel>
@@ -64,6 +64,26 @@ export default {
         v => v === this.password || "Password should match"
       ]
     };
+  },
+  methods: {
+    async registration() {
+      try {
+        if (this.$refs.form.validate()) {
+          const user = {
+            email: this.email,
+            password: this.password
+          };
+          const response = await this.axios.post("/registration", user);
+          this.$store.dispatch("setToken", response.data.token);
+          this.$store.dispatch("setUser", response.data.user);
+          this.$router.push({
+            name: "home"
+          });
+        }
+      } catch (error) {
+        this.error = error.response.data.error;
+      }
+    }
   },
   components: {
     Panel

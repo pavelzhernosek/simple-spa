@@ -1,5 +1,6 @@
 const AuthController = require("./controllers/AuthController");
 const AuthControllerPolicy = require("./policies/AuthControllerPolicy");
+const EventsController = require("./controllers/EventsContoller");
 module.exports = app => {
   app.post(
     "/registration",
@@ -7,4 +8,7 @@ module.exports = app => {
     AuthController.registration
   );
   app.post("/login", AuthController.login);
+
+  app.get("/events", EventsController.index);
+  app.post("/events", EventsController.post);
 };

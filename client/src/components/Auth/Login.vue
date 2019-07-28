@@ -14,7 +14,7 @@
             ></v-text-field>
             <v-text-field
               id="password"
-              prepend-icon="mdi-lock-outline"
+              prepend-icon="mdi-key"
               name="password"
               label="Password"
               :rules="passwordRules"
@@ -72,6 +72,7 @@ export default {
       }
     }
   },
+  mounted() {},
   components: {
     Panel
   }
