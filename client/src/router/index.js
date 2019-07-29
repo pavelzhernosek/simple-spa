@@ -5,6 +5,7 @@ import Registration from "@/components/Auth/Registration";
 import Login from "@/components/Auth/Login";
 import Events from "@/components/Events";
 import CreateEvent from "@/components/CreateEvent";
+import ViewEvent from "@/components/ViewEvent";
 
 Vue.use(Router);
 export default new Router({
@@ -33,6 +34,11 @@ export default new Router({
       path: "/events/create",
       name: "events-create",
       component: CreateEvent
+    },
+    {
+      path: "/events/:eventId",
+      name: "event",
+      component: ViewEvent
     }
   ],
   mode: "history"

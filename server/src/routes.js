@@ -10,5 +10,6 @@ module.exports = app => {
   app.post("/login", AuthController.login);
 
   app.get("/events", EventsController.index);
+  app.get("/events/:eventId", EventsController.show);
   app.post("/events", EventsController.post);
 };

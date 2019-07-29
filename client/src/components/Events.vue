@@ -29,7 +29,18 @@
                   </v-card-title>
 
                   <v-card-actions>
-                    <v-btn text>Open</v-btn>
+                    <v-btn
+                      @click="
+                        navigateTo({
+                          name: 'event',
+                          params: {
+                            eventId: event._id
+                          }
+                        })
+                      "
+                      text
+                      >Open
+                    </v-btn>
                     <v-btn text color="purple">
                       Edit
                     </v-btn>
@@ -55,6 +66,7 @@
 
 <script>
 import Panel from "@/components/Panel";
+
 export default {
   data() {
     return {
@@ -80,11 +92,13 @@ export default {
 .event-title {
   font-size: 30px;
 }
+
 .event-description {
   padding-top: 10px;
   text-align: left;
   font-size: 16px;
 }
+
 .event-location {
   font-size: 24px;
 }
