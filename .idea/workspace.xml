@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2ffc0ef-4344-4a0e-9797-f45b65161a54" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/CreateEvent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Events.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/controllers/EventsContoller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/models/Event.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Auth/Login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Auth/Registration.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Auth/Registration.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/Api.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/AuthServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Events.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Events.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/models/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/models/Event.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +92,8 @@
       <workItem from="1564247768924" duration="458000" />
       <workItem from="1564248247568" duration="5712000" />
       <workItem from="1564301161671" duration="11931000" />
-      <workItem from="1564332402573" duration="9293000" />
+      <workItem from="1564332402573" duration="17479000" />
+      <workItem from="1564386168584" duration="1134000" />
     </task>
     <servers />
   </component>

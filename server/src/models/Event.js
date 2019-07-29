@@ -1,3 +1,4 @@
+const uuid = require("uuid");
 const { Schema, model } = require("mongoose");
 
 const eventSchema = new Schema({
@@ -10,7 +11,8 @@ const eventSchema = new Schema({
   event_image: String,
   event_location: String,
   event_cost: Number,
-  event_is_free: Boolean
+  event_is_free: Boolean,
+  event_id: String
 });
 
 module.exports = model("Event", eventSchema);

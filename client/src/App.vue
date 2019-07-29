@@ -2,7 +2,7 @@
   <v-app>
     <page-header />
     <v-content>
-      <v-container fluid>
+      <v-container>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -15,8 +15,6 @@ export default {
   name: "App",
   components: { PageHeader },
   data: () => ({}),
-  mounted() {
-    console.log("mounted");
-  }
+  mounted() {}
 };
 </script>

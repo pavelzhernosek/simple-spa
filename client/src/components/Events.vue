@@ -1,6 +1,6 @@
 <template>
   <v-layout justify-center>
-    <v-flex xs12 sm8 lg6 xl4>
+    <v-flex xs12 lg10>
       <panel title="My events">
         <v-btn
           slot="action"
@@ -17,31 +17,37 @@
             mdi-plus
           </v-icon>
         </v-btn>
-        <v-layout column>
-          <div class="pt-3" v-for="event in events" :key="event.id">
-            <v-layout>
-              <v-flex xs6>
-                <div class="event-title">
-                  {{ event.event_title }}
-                </div>
-                <div class="event-location">
-                  {{ event.event_location }}
-                </div>
-                <div class="event-description">
-                  {{ event.event_description }}
-                  <br />
-                  User Id:
-                  <span
-                    ><i>{{ event.event_author_id }}</i></span
-                  >
-                </div>
-              </v-flex>
-              <v-flex xs6>
-                <img class="event-image" :src="event.event_image" />
-              </v-flex>
-            </v-layout>
-          </div>
-        </v-layout>
+        <v-container grid-list-lg>
+          <v-layout wrap>
+            <v-flex xs12 sm6 md4 v-for="event in events" :key="event._id">
+              <v-hover v-slot:default="{ hover }">
+                <v-card class="mt-4 mx-auto" :elevation="hover ? 12 : 2">
+                  <v-img :src="event.event_image" height="250px"></v-img>
+
+                  <v-card-title>
+                    <div>{{ event.event_title }}</div>
+                  </v-card-title>
+
+                  <v-card-actions>
+                    <v-btn text>Open</v-btn>
+                    <v-btn text color="purple">
+                      Edit
+                    </v-btn>
+                    <v-spacer></v-spacer>
+                  </v-card-actions>
+
+                  <v-expand-transition>
+                    <div v-show="show">
+                      <v-card-text>
+                        {{ event.event_description }}
+                      </v-card-text>
+                    </div>
+                  </v-expand-transition>
+                </v-card>
+              </v-hover>
+            </v-flex>
+          </v-layout>
+        </v-container>
       </panel>
     </v-flex>
   </v-layout>
@@ -52,7 +58,9 @@ import Panel from "@/components/Panel";
 export default {
   data() {
     return {
-      events: null
+      events: null,
+      show: false,
+      userEmail: null
     };
   },
   async mounted() {
@@ -68,4 +76,23 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.event-title {
+  font-size: 30px;
+}
+.event-description {
+  padding-top: 10px;
+  text-align: left;
+  font-size: 16px;
+}
+.event-location {
+  font-size: 24px;
+}
+
+.event-image {
+  width: 100%;
+  max-height: 300px;
+  margin: 0 auto;
+  object-fit: cover;
+}
+</style>

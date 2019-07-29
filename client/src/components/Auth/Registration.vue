@@ -31,6 +31,7 @@
               v-model="confirmPassword"
             ></v-text-field>
           </v-form>
+          <span class="error--text">{{ error }}</span>
           <br />
           <v-btn color="primary" @click="registration" :disabled="!valid">
             Create account
@@ -50,6 +51,7 @@ export default {
       password: "",
       confirmPassword: "",
       valid: false,
+      error: null,
       emailRules: [
         v => !!v || "E-mail is required",
         v => /.+@.+/.test(v) || "E-mail must be valid"
