@@ -2,9 +2,7 @@
   <v-app>
     <page-header />
     <v-content>
-      <v-container>
-        <router-view></router-view>
-      </v-container>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
@@ -20,7 +18,15 @@ export default {
 </script>
 
 <style>
-#app {
-  margin-top: 60px;
+.login-field,
+.register-field {
+  margin-top: 120px;
+}
+
+@media screen and (max-width: 500px) {
+  .login-field,
+  .register-field {
+    margin-top: 50px;
+  }
 }
 </style>

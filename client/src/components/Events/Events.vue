@@ -1,5 +1,5 @@
 <template>
-  <v-layout justify-center>
+  <v-layout class="mt-5" justify-center>
     <v-flex xs12 lg10>
       <panel title="My events">
         <v-btn

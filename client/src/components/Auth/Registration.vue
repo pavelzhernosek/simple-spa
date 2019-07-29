@@ -1,45 +1,47 @@
 <template>
-  <v-layout justify-center>
-    <v-flex xs12 sm8 lg6 xl4>
-      <panel title="Registration field">
-        <v-flex>
-          <v-form name="events-form" ref="form" v-model="valid" validation>
-            <v-text-field
-              prepend-icon="mdi-account"
-              name="email"
-              label="Email"
-              type="email"
-              :rules="emailRules"
-              v-model="email"
-            ></v-text-field>
-            <v-text-field
-              id="password"
-              prepend-icon="mdi-key"
-              name="password"
-              label="Password"
-              :rules="passwordRules"
-              type="password"
-              v-model="password"
-            ></v-text-field>
-            <v-text-field
-              id="confirmPassword"
-              prepend-icon="mdi-key"
-              name="confirm-password"
-              label="Confirm Password"
-              :rules="confirmPasswordRules"
-              type="password"
-              v-model="confirmPassword"
-            ></v-text-field>
-          </v-form>
-          <span class="error--text">{{ error }}</span>
-          <br />
-          <v-btn color="primary" @click="registration" :disabled="!valid">
-            Create account
-          </v-btn>
-        </v-flex>
-      </panel>
-    </v-flex>
-  </v-layout>
+  <v-container>
+    <v-layout class="register-field" justify-center>
+      <v-flex xs12 sm8 lg6 xl4>
+        <panel title="Registration field">
+          <v-flex>
+            <v-form name="events-form" ref="form" v-model="valid" validation>
+              <v-text-field
+                prepend-icon="mdi-account"
+                name="email"
+                label="Email"
+                type="email"
+                :rules="emailRules"
+                v-model="email"
+              ></v-text-field>
+              <v-text-field
+                id="password"
+                prepend-icon="mdi-key"
+                name="password"
+                label="Password"
+                :rules="passwordRules"
+                type="password"
+                v-model="password"
+              ></v-text-field>
+              <v-text-field
+                id="confirmPassword"
+                prepend-icon="mdi-key"
+                name="confirm-password"
+                label="Confirm Password"
+                :rules="confirmPasswordRules"
+                type="password"
+                v-model="confirmPassword"
+              ></v-text-field>
+            </v-form>
+            <div class="error--text">{{ error }}</div>
+            <br />
+            <v-btn color="primary" @click="registration" :disabled="!valid">
+              Create account
+            </v-btn>
+          </v-flex>
+        </panel>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

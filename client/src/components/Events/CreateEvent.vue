@@ -2,7 +2,7 @@
   <v-layout justify-center row wrap>
     <v-flex xs12 sm10 lg8 xl6>
       <panel title="Create event">
-        <v-flex>
+        <v-flex class="pl-2 pr-2">
           <v-form ref="form" v-model="valid" validation>
             <v-text-field
               name="event_title"

@@ -69,7 +69,12 @@ export default {
     links() {
       if (this.isUserLoggedIn) {
         return [
-          { title: "My events", icon: "mdi-calendar-clock", url: "/events" }
+          {
+            title: "My events",
+            icon: "mdi-format-list-bulleted",
+            url: "/events"
+          },
+          { title: "Orders", icon: "mdi-bookmark-check", url: "/orders" }
         ];
       }
       return [
