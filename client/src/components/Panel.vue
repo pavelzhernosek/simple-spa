@@ -19,10 +19,10 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (max-width: 600px) {
-  /*.panel-wrapper {*/
-  /*  padding-left: 0 !important;*/
-  /*  padding-right: 0 !important;*/
-  /*}*/
-}
+/*@media screen and (max-width: 600px) {*/
+/*  .panel-wrapper {*/
+/*    padding-left: 0 !important;*/
+/*    padding-right: 0 !important;*/
+/*  }*/
+/*}*/
 </style>

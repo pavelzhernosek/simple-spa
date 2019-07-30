@@ -1,6 +1,6 @@
-const AuthController = require("./controllers/AuthController");
+const AuthController = require("./controllers/auth");
 const AuthControllerPolicy = require("./policies/AuthControllerPolicy");
-const EventsController = require("./controllers/EventsContoller");
+const EventsController = require("./controllers/position");
 module.exports = app => {
   app.post(
     "/registration",

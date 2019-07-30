@@ -11,7 +11,7 @@
             show-arrows-on-hover
           >
             <v-carousel-item
-              v-for="event in events"
+              v-for="event in promoEvents"
               :src="event.event_image"
               :key="event._id"
             >
@@ -22,7 +22,7 @@
     </v-container>
     <v-container grid-list-lg>
       <v-layout row wrap>
-        <v-flex xs12 sm6 md4 xl3 v-for="event in events" :key="event._id">
+        <v-flex xs12 sm6 md4 xl3 v-for="event in allEvents" :key="event._id">
           <v-hover v-slot:default="{ hover }">
             <v-card :elevation="hover ? 12 : 2" class="mx-auto">
               <v-img
@@ -41,18 +41,7 @@
               </v-card-text>
 
               <v-card-actions>
-                <v-btn
-                  @click="
-                    navigateTo({
-                      name: 'event',
-                      params: {
-                        eventId: event._id
-                      }
-                    })
-                  "
-                  text
-                  >Open
-                </v-btn>
+                <v-btn text>Open </v-btn>
                 <v-btn text color="purple">
                   Edit
                 </v-btn>
@@ -67,18 +56,18 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import Panel from "@/components/Panel";
 export default {
-  data() {
-    return {
-      events: null
-    };
+  computed: mapGetters(["allEvents", "promoEvents"]),
+  async mounted() {
+    this.axiosEvents();
+  },
+  methods: {
+    ...mapActions(["axiosEvents"])
   },
   components: {
     Panel
-  },
-  async mounted() {
-    this.events = (await this.axios.get("/events")).data;
   }
 };
 </script>

@@ -1,4 +1,3 @@
-const uuid = require("uuid");
 const { Schema, model } = require("mongoose");
 
 const eventSchema = new Schema({

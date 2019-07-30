@@ -77,7 +77,7 @@ export default {
             email: this.email,
             password: this.password
           };
-          const response = await this.axios.post("/registration", user);
+          const response = await this.axios.post("/auth/registration", user);
           this.$store.dispatch("setToken", response.data.token);
           this.$store.dispatch("setUser", response.data.user);
           this.$router.push({

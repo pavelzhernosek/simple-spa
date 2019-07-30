@@ -2,18 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2ffc0ef-4344-4a0e-9797-f45b65161a54" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Events/ViewEvent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/User/Orders.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Events/Create.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Events/Event.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/store/event.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/controllers/events.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/controllers/order.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/routes/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/routes/category.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/routes/events.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/routes/order.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Auth/Login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Auth/Registration.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Auth/Registration.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CreateEvent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Events/CreateEvent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Events.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Events/Events.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Events/CreateEvent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Events/Events.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Events/Events.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Events/ViewEvent.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ViewEvent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Panel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Panel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/User/Orders.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/User/Orders.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controllers/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/controllers/AuthController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controllers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/controllers/EventsContoller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/models/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/models/Event.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/routes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -40,6 +57,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../js/practise/context" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -48,6 +66,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="J:\courses\apps\spa\server\src" />
+      <recent name="J:\courses\apps\spa\server\src\routes" />
       <recent name="J:\courses\apps\spa\client\src\components\Events" />
       <recent name="J:\courses\apps\spa\client\src\components\Auth" />
     </key>
@@ -98,7 +118,8 @@
       <workItem from="1564248247568" duration="5712000" />
       <workItem from="1564301161671" duration="11931000" />
       <workItem from="1564332402573" duration="17479000" />
-      <workItem from="1564386168584" duration="19271000" />
+      <workItem from="1564386168584" duration="24558000" />
+      <workItem from="1564475423326" duration="26376000" />
     </task>
     <servers />
   </component>
