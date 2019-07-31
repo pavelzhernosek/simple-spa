@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-container class="pt-0" fluid>
-      <v-layout row>
+    <v-container>
+      <v-layout>
         <v-flex xs12>
           <v-carousel
             interval="16000"
@@ -11,7 +11,7 @@
             show-arrows-on-hover
           >
             <v-carousel-item
-              v-for="event in promoEvents"
+              v-for="event in events"
               :src="event.event_image"
               :key="event._id"
             >
@@ -22,7 +22,7 @@
     </v-container>
     <v-container grid-list-lg>
       <v-layout row wrap>
-        <v-flex xs12 sm6 md4 xl3 v-for="event in allEvents" :key="event._id">
+        <v-flex xs12 sm6 md4 xl3 v-for="event in events" :key="event._id">
           <v-hover v-slot:default="{ hover }">
             <v-card :elevation="hover ? 12 : 2" class="mx-auto">
               <v-img
@@ -57,19 +57,32 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import EventsService from "@/services/EventsService";
 import Panel from "@/components/Panel";
 export default {
-  computed: mapGetters(["allEvents", "promoEvents"]),
+  data() {
+    return {
+      events: null
+    };
+  },
   async mounted() {
-    this.axiosEvents();
+    this.events = (await EventsService.getAll()).data;
   },
-  methods: {
-    ...mapActions(["axiosEvents"])
-  },
+  // computed: mapGetters(["allEvents", "promoEvents"]),
+  // async mounted() {
+  //   this.axiosEvents();
+  // },
+  // methods: {
+  //   ...mapActions(["axiosEvents"])
+  // },
   components: {
     Panel
   }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.home-page {
+  max-width: 80%;
+}
+</style>

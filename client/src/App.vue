@@ -9,11 +9,13 @@
 
 <script>
 import PageHeader from "@/components/Header";
+import { mapGetters } from "vuex";
 export default {
   name: "App",
   components: { PageHeader },
-  data: () => ({}),
-  mounted() {}
+  computed: {
+    ...mapGetters(["logged", "token"])
+  }
 };
 </script>
 

@@ -1,13 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import user from "./user";
-import event from "./event";
+import createPersistedState from "vuex-persistedstate";
+import auth from "./modules/auth";
+import event from "./modules/event";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true,
+  plugins: [createPersistedState()],
   modules: {
-    user,
+    auth,
     event
   }
 });

@@ -1,71 +1,62 @@
-const User = require("../models/User");
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 const config = require("../config");
-
-function jwtSignUser(user) {
-  const ONE_WEEK = 60 * 60 * 24 * 7;
-  return jwt.sign(user, config.auth.jwtSecret, {
-    expiresIn: ONE_WEEK
-  });
-}
+const errorHandler = require("../utils/errorHandler");
 
 module.exports.registration = async function(req, res) {
-  try {
-    const { email, password } = req.body;
-    const salt = bcrypt.genSaltSync(10);
-    const candidate = await User.findOne({ email });
-    if (candidate) {
-      res.status(400).send({
-        error: "This email account is already in use"
-      });
-    } else {
-      const user = User({
-        email: req.body.email,
-        password: bcrypt.hashSync(password, salt)
-      });
-      await user.save();
-
-      const userJson = user.toJSON();
-      res.send({
-        user: userJson,
-        token: jwtSignUser(userJson)
-      });
-    }
-  } catch (e) {
-    res.status(400).send({
-      error: "This email account is already in use"
+  const candidate = await User.findOne({ email: req.body.email });
+  if (candidate) {
+    res.status(409).json({
+      message: "This email account is already in use"
     });
-    console.log(e);
+  } else {
+    const salt = bcrypt.genSaltSync(10);
+    const password = req.body.password;
+    const user = new User({
+      email: req.body.email,
+      password: bcrypt.hashSync(password, salt)
+    });
+    try {
+      await user.save();
+      res.status(201).json(user);
+    } catch (e) {
+      errorHandler(res, e);
+    }
   }
 };
 
 module.exports.login = async function(req, res) {
   try {
-    const { email, password } = req.body;
-    const candidate = await User.findOne({ email });
-
-    if (!candidate) {
-      return res.status(403).send({
-        error: "The login information was incorrect"
+    const candidate = await User.findOne({ email: req.body.email });
+    if (candidate) {
+      const passwordResult = bcrypt.compareSync(
+        req.body.password,
+        candidate.password
+      );
+      if (passwordResult) {
+        const token = jwt.sign(
+          {
+            email: candidate.email,
+            userId: candidate._id
+          },
+          config.JWT,
+          { expiresIn: 60 * 60 }
+        );
+        res.status(200).json({
+          token: `Bearer ${token}`
+        });
+      } else {
+        res.status(401).json({
+          message: "Passwords do not match. Please try again."
+        });
+      }
+    } else {
+      res.status(404).json({
+        message: "Email address not found"
       });
     }
-
-    const isPasswordValid = bcrypt.compareSync(password, candidate.password);
-
-    if (!isPasswordValid) {
-      return res.status(403).send({
-        error: "The password information was incorrect"
-      });
-    }
-    const user = candidate.toJSON();
-    res.send({
-      user,
-      token: jwtSignUser(user)
-    });
   } catch (e) {
-    res.status(500).send({
-      error: "An error has occured while trying to log in"
-    });
+    errorHandler(res, e);
   }
 };

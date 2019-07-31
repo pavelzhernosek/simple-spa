@@ -1,8 +1,13 @@
 const express = require("express");
 const controller = require("../controllers/events");
+const passport = require("passport");
 const router = express.Router();
 
-router.get("/", controller.getAll);
+router.get(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  controller.getAll
+);
 router.get("/:id", controller.getById);
 router.get("/:id", controller.getByCategoryId);
 router.post("/", controller.create);

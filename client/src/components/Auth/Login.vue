@@ -42,6 +42,7 @@
 
 <script>
 import Panel from "@/components/Panel";
+import AuthenticationService from "@/services/AuthenticationService";
 export default {
   data() {
     return {
@@ -68,11 +69,11 @@ export default {
             email: this.email,
             password: this.password
           };
-          const response = await this.axios.post("/auth/login", user);
+          const response = await AuthenticationService.login(user);
           this.$store.dispatch("setToken", response.data.token);
           this.$store.dispatch("setUser", response.data.user);
           this.$router.push({
-            name: "home"
+            name: "events"
           });
         }
       } catch (error) {

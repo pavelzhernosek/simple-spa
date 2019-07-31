@@ -64,7 +64,7 @@ export default {
   },
   computed: {
     isUserLoggedIn() {
-      return this.$store.getters.isUserLoggedIn;
+      return this.$store.state.isUserLoggedIn;
     },
     links() {
       if (this.isUserLoggedIn) {

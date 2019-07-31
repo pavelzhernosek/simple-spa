@@ -1,17 +1,43 @@
 const { Schema, model } = require("mongoose");
 
 const eventSchema = new Schema({
-  event_title: String,
-  event_author_id: Number,
-  event_start_time: String,
-  event_start_date: String,
-  event_description: String,
-  event_promo: Boolean,
-  event_image: String,
-  event_location: String,
-  event_cost: Number,
-  event_is_free: Boolean,
-  event_id: String
+  title: {
+    type: String,
+    required: true
+  },
+  user: {
+    type: String,
+    required: true
+  },
+  start_time: {
+    type: Date
+  },
+  start_date: {
+    type: Date
+  },
+  category: {
+    ref: "categories",
+    type: Schema.Types.ObjectId
+  },
+  description: {
+    type: String,
+    default: ""
+  },
+  promo: {
+    type: Boolean,
+    default: false
+  },
+  image: {
+    type: String,
+    default: ""
+  },
+  location: {
+    type: String,
+    required: true,
+    default: ""
+  },
+  cost: Number,
+  isFree: Boolean
 });
 
 module.exports = model("Event", eventSchema);

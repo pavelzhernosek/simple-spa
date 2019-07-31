@@ -1,8 +1,10 @@
 export default {
   state: {
-    user: null,
-    token: null,
-    isUserLoggedIn: false
+    session: {
+      token: "",
+      isUserLoggedIn: false
+    },
+    user: null
   },
   mutations: {
     setToken(state, token) {
@@ -22,11 +24,9 @@ export default {
     }
   },
   getters: {
-    getUser(state) {
-      return state.user;
-    },
-    isUserLoggedIn(state) {
-      return state.token !== null;
-    }
+    session: state => state.session,
+    // or could have both getters separated
+    logged: state => state.session.isUserLoggedIn,
+    token: state => state.session.token
   }
 };

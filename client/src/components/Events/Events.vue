@@ -18,7 +18,7 @@
       </v-btn>
       <v-container grid-list-lg>
         <v-layout wrap>
-          <v-flex xs12 sm12 md6 lg4 v-for="event in allEvents" :key="event._id">
+          <v-flex xs12 sm12 md6 lg4 v-for="event in events" :key="event._id">
             <v-hover v-slot:default="{ hover }">
               <v-card class="mt-4 mx-auto" :elevation="hover ? 12 : 2">
                 <v-img :src="event.event_image" height="250px"></v-img>
@@ -55,21 +55,23 @@
 </template>
 
 <script>
-import Panel from "@/components/Panel";
-import { mapGetters, mapActions } from "vuex";
+import EventsService from "@/services/EventsService";
 export default {
-  computed: mapGetters(["allEvents"]),
+  data() {
+    return {
+      events: null
+    };
+  },
   async mounted() {
-    this.axiosEvents();
+    this.events = (await EventsService.getAll()).data;
   },
   methods: {
     navigateTo(route) {
       this.$router.push(route);
-    },
-    ...mapActions(["axiosEvents"])
-  },
+    }
+  }
 
-  components: { Panel }
+  // components: { Panel }
 };
 </script>
 
