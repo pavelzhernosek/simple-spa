@@ -65,11 +65,14 @@ export default {
     async login() {
       try {
         if (this.$refs.form.validate()) {
-          const user = {
+          // const user = {
+          //   email: this.email,
+          //   password: this.password
+          // };
+          const response = await AuthenticationService.login({
             email: this.email,
             password: this.password
-          };
-          const response = await AuthenticationService.login(user);
+          });
           this.$store.dispatch("setToken", response.data.token);
           this.$store.dispatch("setUser", response.data.user);
           this.$router.push({
