@@ -22,7 +22,7 @@
     </v-container>
     <v-container grid-list-lg>
       <v-layout row wrap>
-        <v-flex xs12 sm6 md4 xl3 v-for="event in events" :key="event._id">
+        <v-flex xs12 md6 lg4 xl4 v-for="event in events" :key="event._id">
           <v-hover v-slot:default="{ hover }">
             <v-card :elevation="hover ? 12 : 2" class="mx-auto">
               <v-img

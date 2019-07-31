@@ -1,15 +1,52 @@
 <template>
   <div>
-    <v-navigation-drawer app temporary v-model="drawer">
-      <v-list dense>
-        <v-list-item v-for="link in links" :key="link.title" :to="link.url">
-          <v-list-item-action>
-            <v-icon>{{ link.icon }}</v-icon>
-          </v-list-item-action>
+    <v-app-bar app clipped-left>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <span class="title ml-3 mr-5 headline text-uppercase"
+        >Events&nbsp;<span class="font-weight-light">App</span></span
+      >
+      <v-spacer></v-spacer>
+      <v-text-field
+        style="max-width: 400px"
+        single-line
+        flat
+        hide-details
+        label="Search"
+        prepend-inner-icon="mdi-magnify"
+      ></v-text-field>
+    </v-app-bar>
+    <v-navigation-drawer temporary app v-model="drawer">
+      <template v-slot:prepend>
+        <v-list-item two-line class="pt-2 pb-2">
+          <v-list-item-avatar>
+            <img
+              src="https://cdn1.iconfinder.com/data/icons/main-ui-elements-with-colour-bg/512/male_avatar-512.png"
+            />
+          </v-list-item-avatar>
+
           <v-list-item-content>
-            <v-list-item-title>{{ link.title }}</v-list-item-title>
+            <v-list-item-title>Pavel Zhernosek</v-list-item-title>
+            <v-list-item-subtitle>Logged In</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
+      </template>
+      <v-divider></v-divider>
+      <v-list-item
+        class="pt-2 pb-2"
+        v-for="link in links"
+        :key="link.title"
+        :to="link.url"
+      >
+        <v-list-item-action>
+          <v-icon>{{ link.icon }}</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>{{ link.title }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <template v-slot:append>
+        <v-divider></v-divider>
         <v-list-item @click="logout" text v-if="isUserLoggedIn">
           <v-list-item-action>
             <v-icon>mdi-logout-variant</v-icon>
@@ -18,40 +55,15 @@
             <v-list-item-title>Logout</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list>
+      </template>
     </v-navigation-drawer>
-    <v-app-bar dark color="primary" fixed app>
-      <v-app-bar-nav-icon
-        @click="drawer = !drawer"
-        class="hidden-md-and-up"
-      ></v-app-bar-nav-icon>
-
-      <v-toolbar-title class="headline text-uppercase">
-        <router-link to="/" tag="span" class="pointer">
-          <span>Events</span>
-          <span class="font-weight-light">APP</span>
-        </router-link>
-      </v-toolbar-title>
-
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn text v-for="link in links" :key="link.title" :to="link.url">
-          {{ link.title }}
-          <v-icon right>{{ link.icon }}</v-icon>
-        </v-btn>
-        <v-btn text @click="logout" v-if="isUserLoggedIn">
-          <v-icon left>mdi-logout-variant</v-icon>
-          Logout
-        </v-btn>
-      </v-toolbar-items>
-    </v-app-bar>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    drawer: false
+    drawer: true
   }),
   methods: {
     logout() {

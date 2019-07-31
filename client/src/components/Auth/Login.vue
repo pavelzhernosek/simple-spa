@@ -43,6 +43,7 @@
 <script>
 import Panel from "@/components/Panel";
 import AuthenticationService from "@/services/AuthenticationService";
+import user from "../../store/modules/user";
 export default {
   data() {
     return {
@@ -65,18 +66,15 @@ export default {
     async login() {
       try {
         if (this.$refs.form.validate()) {
-          // const user = {
-          //   email: this.email,
-          //   password: this.password
-          // };
-          const response = await AuthenticationService.login({
+          const user = {
             email: this.email,
             password: this.password
-          });
+          };
+          const response = await AuthenticationService.login(user);
           this.$store.dispatch("setToken", response.data.token);
           this.$store.dispatch("setUser", response.data.user);
           this.$router.push({
-            name: "events"
+            name: "home"
           });
         }
       } catch (error) {

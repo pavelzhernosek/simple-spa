@@ -1,4 +1,5 @@
 const Event = require("../models/Event");
+const errorHandler = require("../utils/errorHandler");
 
 module.exports.getAll = async function(req, res) {
   try {
@@ -16,22 +17,18 @@ module.exports.getById = async function(req, res) {
     const event = await Event.findById(req.params.id);
     res.send(event);
   } catch (e) {
-    res.status(500).send({
-      error: "An error has occured trying to fetch the events"
-    });
+    errorHandler(res, e);
   }
 };
 
 module.exports.getByCategoryId = async function(req, res) {
-  // try {
-  //   const event = await Event.findById(req.params.id);
-  //   console.log(req.params);
-  //   res.send(event);
-  // } catch (e) {
-  //   res.status(500).send({
-  //     error: "An error has occured trying to fetch the events"
-  //   });
-  // }
+  try {
+    const event = await Event.findById(req.params.id);
+    console.log(req.params);
+    res.send(event);
+  } catch (e) {
+    errorHandler(res, e);
+  }
 };
 
 module.exports.create = async function(req, res) {
@@ -40,9 +37,7 @@ module.exports.create = async function(req, res) {
     await event.save();
     res.send(event);
   } catch (e) {
-    res.status(500).send({
-      error: "An error has occured while trying to create the events"
-    });
+    errorHandler(res, e);
   }
 };
 
