@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2ffc0ef-4344-4a0e-9797-f45b65161a54" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/services/Api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/services/AuthenticationService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/services/EventsService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/store/modules/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/store/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/middleware/passport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/models/Category.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/utils/errorHandler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Auth/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Events/Events.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Events/Events.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/event.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/event.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/controllers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controllers/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/models/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/models/Event.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/routes/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/routes/category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/routes/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/routes/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/routes/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/routes/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/store.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +94,7 @@
       <workItem from="1564332402573" duration="17479000" />
       <workItem from="1564386168584" duration="24558000" />
       <workItem from="1564475423326" duration="46325000" />
-      <workItem from="1564558715440" duration="15535000" />
+      <workItem from="1564558715440" duration="16353000" />
     </task>
     <servers />
   </component>
