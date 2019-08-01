@@ -10,6 +10,7 @@
 
       <v-spacer></v-spacer>
       <v-text-field
+        class="hidden-md-and-down"
         style="max-width: 400px"
         single-line
         flat
@@ -19,19 +20,21 @@
       ></v-text-field>
     </v-app-bar>
     <v-navigation-drawer temporary app v-model="drawer">
-      <template v-slot:prepend>
-        <v-list-item two-line class="pt-2 pb-2">
-          <v-list-item-avatar>
-            <img
-              src="https://cdn1.iconfinder.com/data/icons/main-ui-elements-with-colour-bg/512/male_avatar-512.png"
-            />
-          </v-list-item-avatar>
+      <template v-if="isUserLoggedIn" v-slot:prepend>
+        <router-link tag="span" :to="'/profile/' + user_id">
+          <v-list-item two-line class="pt-2 pb-2">
+            <v-list-item-avatar>
+              <img
+                src="https://cdn1.iconfinder.com/data/icons/main-ui-elements-with-colour-bg/512/male_avatar-512.png"
+              />
+            </v-list-item-avatar>
 
-          <v-list-item-content>
-            <v-list-item-title>Pavel Zhernosek</v-list-item-title>
-            <v-list-item-subtitle>Logged In</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>Pavel Zhernosek</v-list-item-title>
+              <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
       </template>
       <v-divider></v-divider>
       <v-list-item
@@ -66,7 +69,8 @@
 <script>
 export default {
   data: () => ({
-    drawer: true
+    drawer: true,
+    user_id: null
   }),
   methods: {
     logout() {
@@ -77,9 +81,12 @@ export default {
       });
     }
   },
+  mounted() {
+    this.user_id = this.$store.getters.userId;
+  },
   computed: {
     isUserLoggedIn() {
-      return this.$store.state.auth.isUserLoggedIn;
+      return this.$store.getters.logged;
     },
     links() {
       if (this.isUserLoggedIn) {

@@ -1,143 +1,179 @@
 <template>
-  <v-container>
-    <v-layout class="mt-5" justify-center row wrap>
-      <v-flex xs12 sm10 lg8 xl6>
-        <panel title="Create event">
-          <v-flex class="pl-2 pr-2">
-            <v-form ref="form" v-model="valid" lazy-validation>
+  <v-layout>
+    <v-btn bottom color="pink" dark fab fixed right @click="dialog = !dialog">
+      <v-icon>mdi-plus</v-icon>
+    </v-btn>
+    <v-dialog v-model="dialog" width="800px">
+      <v-card>
+        <v-card-title class="title headline text-uppercase">
+          Create event
+        </v-card-title>
+        <v-container grid-list-sm>
+          <v-layout wrap>
+            <v-flex xs12>
               <v-text-field
-                name="event_title"
-                label="Event title"
-                type="text"
+                prepend-icon="mdi-clipboard-text"
+                placeholder="Title*"
                 :rules="[v => !!v || 'Title is required']"
                 required
-                v-model="event.event_title"
+                v-model="event.title"
               ></v-text-field>
-
-              <v-textarea
-                name="event_description"
-                label="Description"
-                :rules="[v => !!v || 'Description is required']"
-                auto-grow
-                v-model="event.event_description"
-              ></v-textarea>
-
+            </v-flex>
+            <v-flex xs6>
+              <v-file-input
+                :rules="rules"
+                accept="image/png, image/jpeg, image/bmp"
+                placeholder="Pick an image"
+                prepend-icon="mdi-camera"
+              ></v-file-input>
+            </v-flex>
+            <v-flex xs6>
+              <v-select :items="items" label="Categories"></v-select>
+            </v-flex>
+            <v-flex xs12>
               <v-text-field
-                name="event_start_date"
-                label="Date starts"
-                type="text"
-                placeholder="YYYY-MM-DD"
-                :rules="[v => !!v || 'Date is required']"
-                required
-                v-model="event.event_start_date"
+                prepend-icon="mdi-message-text-outline"
+                placeholder="Description*"
+                v-model="event.description"
               ></v-text-field>
-
-              <v-text-field
-                name="event_start_time"
-                label="Time starts"
-                type="text"
-                placeholder="HH:MM"
-                :rules="[v => !!v || 'Time is required']"
-                required
-                v-model="event.event_start_time"
-              ></v-text-field>
-
-              <v-text-field
-                name="event_image"
-                label="Image link"
-                type="text"
-                v-model="event.event_image"
-              ></v-text-field>
-
-              <v-text-field
-                name="event_location"
-                label="Location"
-                placeholder="City, Street, house"
-                type="text"
-                :rules="[v => !!v || 'Location is required']"
-                required
-                v-model="event.event_location"
-              ></v-text-field>
-
-              <v-text-field
-                name="event_cost"
-                label="Cost"
-                placeholder="BYR"
-                type="number"
-                v-model="event.event_cost"
-              ></v-text-field>
-            </v-form>
-
-            <v-layout row>
-              <v-flex xs12>
-                <v-switch
-                  color="primary"
-                  v-model="event.event_promo"
-                  :label="'Add to promo'"
-                ></v-switch>
-              </v-flex>
-            </v-layout>
-            <v-layout row>
-              <v-flex xs12>
-                <v-switch
-                  color="primary"
-                  v-model="event.event_is_free"
-                  :label="'Free entry?'"
-                ></v-switch>
-              </v-flex>
-            </v-layout>
-            <v-layout row>
-              <v-spacer></v-spacer>
-              <v-btn @click="createEvent" class="success" :disabled="!valid"
-                >Create event
-              </v-btn>
-            </v-layout>
-          </v-flex>
-        </panel>
-      </v-flex>
-    </v-layout>
-  </v-container>
+            </v-flex>
+            <v-flex xs6>
+              <v-dialog
+                ref="datePicker"
+                v-model="datePicker"
+                :close-on-content-click="false"
+                transition="scale-transition"
+                offset-y
+                full-width
+                max-width="290px"
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on }">
+                  <v-text-field
+                    v-model="event.start_date"
+                    label="Date"
+                    persistent-hint
+                    prepend-icon="mdi-calendar"
+                    @blur="date = parseDate(event.start_date)"
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-date-picker
+                  v-model="date"
+                  no-title
+                  @input="datePicker = false"
+                ></v-date-picker>
+              </v-dialog>
+            </v-flex>
+            <v-flex xs6>
+              <v-dialog
+                ref="timePicker"
+                v-model="timePicker"
+                :close-on-content-click="false"
+                :nudge-right="40"
+                :return-value.sync="event.start_time"
+                transition="scale-transition"
+                offset-y
+                full-width
+                max-width="290px"
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on }">
+                  <v-text-field
+                    v-model="event.start_time"
+                    label="Time"
+                    prepend-icon="mdi-clock"
+                    readonly
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-time-picker
+                  v-model="event.start_time"
+                  format="24hr"
+                  full-width
+                  @click:minute="$refs.timePicker.save(event.start_time)"
+                ></v-time-picker>
+              </v-dialog>
+            </v-flex>
+          </v-layout>
+        </v-container>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn text color="primary" @click="dialog = false">Cancel </v-btn>
+          <v-btn text @click="create">Save</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-layout>
 </template>
 
 <script>
-import Panel from "@/components/Panel";
-
+import EventsService from "@/services/EventsService";
 export default {
-  data() {
-    return {
-      event: {
-        event_title: null,
-        event_author_id: null,
-        event_start_time: null,
-        event_start_date: null,
-        event_description: null,
-        event_promo: null,
-        event_image: null,
-        event_location: null,
-        event_cost: null,
-        event_is_free: null
-      },
-      valid: false
-    };
+  data: vm => ({
+    date: new Date().toISOString().substr(0, 10),
+    rules: [
+      value =>
+        !value ||
+        value.size < 2000000 ||
+        "Avatar size should be less than 2 MB!"
+    ],
+    time: null,
+    datePicker: false,
+    timePicker: false,
+    items: [
+      "Seminars and Conferences",
+      "Trade Shows",
+      "Executive Retreats and Incentive Programs"
+    ],
+    dialog: false,
+    valid: false,
+    event: {
+      title: null,
+      start_time: null,
+      start_date: vm.formatDate(new Date().toISOString().substr(0, 10)),
+      description: null,
+      // this.$store.state.auth.user._id,
+      user_id: "",
+      promo: null,
+      image: null,
+      location: "Minsk",
+      cost: null,
+      is_free: null
+    }
+  }),
+
+  computed: {
+    computedDateFormatted() {
+      return this.formatDate(this.date);
+    }
   },
-  mounted() {
-    this.createEvent();
+  watch: {
+    date(val) {
+      this.event.start_date = this.formatDate(this.date);
+    }
   },
   methods: {
-    createEvent() {
+    formatDate(date) {
+      if (!date) return null;
+
+      const [year, month, day] = date.split("-");
+      return `${month}-${day}-${year}`;
+    },
+    parseDate(date) {
+      if (!date) return null;
+
+      const [month, day, year] = date.split("-");
+      return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+    },
+    async create() {
       try {
-        if (this.$refs.form.validate()) {
-          this.$store.dispatch("createEvent", this.event);
-          this.$router.push({
-            name: "events"
-          });
-        }
+        const event = await EventsService.create(this.event);
       } catch (e) {
         console.log(e);
       }
     }
-  },
-  components: { Panel }
+  }
 };
 </script>
 

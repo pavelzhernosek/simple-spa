@@ -1,13 +1,15 @@
 export default {
   state: {
-    token: null,
-    user: null,
-    isUserLoggedIn: false
+    session: {
+      token: null,
+      isUserLoggedIn: false
+    },
+    user: null
   },
   mutations: {
     setToken(state, token) {
-      state.token = token;
-      state.isUserLoggedIn = !!token;
+      state.session.token = token;
+      state.session.isUserLoggedIn = !!token;
     },
     setUser(state, user) {
       state.user = user;
@@ -20,5 +22,12 @@ export default {
     setUser({ commit }, user) {
       commit("setUser", user);
     }
+  },
+  getters: {
+    session: state => state.session,
+    logged: state => state.session.isUserLoggedIn,
+    token: state => state.session.token,
+    user: state => state.user,
+    userId: state => state.user._id
   }
 };

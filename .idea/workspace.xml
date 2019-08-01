@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2ffc0ef-4344-4a0e-9797-f45b65161a54" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/User/Profile.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/services/UserService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Auth/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Auth/Registration.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Auth/Registration.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Events/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Events/Create.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Events/Events.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Events/Events.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Panel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Panel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/EventsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/EventsService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/controllers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controllers/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/models/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/models/Event.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/modules/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/modules/event.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/event.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/modules/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/routes/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/routes/events.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +107,9 @@
       <workItem from="1564386168584" duration="24558000" />
       <workItem from="1564475423326" duration="46325000" />
       <workItem from="1564558715440" duration="38512000" />
-      <workItem from="1564652567041" duration="6122000" />
+      <workItem from="1564652567041" duration="7663000" />
+      <workItem from="1564675795362" duration="5116000" />
+      <workItem from="1564683477896" duration="8557000" />
     </task>
     <servers />
   </component>
@@ -127,5 +135,17 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/src/components/Events/Events.vue</url>
+          <line>1</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

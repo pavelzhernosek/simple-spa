@@ -2,7 +2,7 @@
   <v-container>
     <v-layout class="register-field" justify-center>
       <v-flex xs12 sm8 lg6 xl4>
-        <panel title="Registration field">
+        <panel class="text-uppercase" title="Registration field">
           <v-flex>
             <v-form name="events-form" ref="form" v-model="valid" validation>
               <v-text-field

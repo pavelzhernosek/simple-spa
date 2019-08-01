@@ -1,15 +1,15 @@
-import axios from "axios";
+import EventsService from "@/services/EventsService";
 export default {
   state: {
     events: []
   },
   actions: {
-    async axiosEvents({ commit }) {
-      const events = (await axios.get("/events")).data;
+    async fetchEvents({ commit }) {
+      const events = (await EventsService.getAll()).data;
       commit("updateEvents", events);
     },
     async createEvent({ commit }, ev) {
-      const event = (await axios.post("/events", ev)).data;
+      const event = await EventsService.create(ev);
       commit("addEvent", event);
     }
   },

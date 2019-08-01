@@ -11,8 +11,8 @@
             show-arrows-on-hover
           >
             <v-carousel-item
-              v-for="event in events"
-              :src="event.event_image"
+              v-for="event in allEvents"
+              :src="event.image"
               :key="event._id"
             >
             </v-carousel-item>
@@ -22,26 +22,22 @@
     </v-container>
     <v-container grid-list-lg>
       <v-layout row wrap>
-        <v-flex xs12 md6 lg4 xl4 v-for="event in events" :key="event._id">
+        <v-flex xs12 md6 lg4 xl4 v-for="event in allEvents" :key="event._id">
           <v-hover v-slot:default="{ hover }">
             <v-card :elevation="hover ? 12 : 2" class="mx-auto">
-              <v-img
-                class="white--text"
-                height="200px"
-                :src="event.event_image"
-              >
+              <v-img class="white--text" height="200px" :src="event.image">
               </v-img>
               <v-card-title class="align-end fill-height">{{
-                event.event_title
+                event.title
               }}</v-card-title>
               <v-card-text>
                 <span class="text--primary">
-                  <span>{{ event.event_description }}</span>
+                  <span>{{ event.description }}</span>
                 </span>
               </v-card-text>
 
               <v-card-actions>
-                <v-btn text>Open </v-btn>
+                <v-btn text :to="'event/' + event._id">Open </v-btn>
                 <v-btn text color="purple">
                   Edit
                 </v-btn>
@@ -60,21 +56,13 @@ import { mapGetters, mapActions } from "vuex";
 import EventsService from "@/services/EventsService";
 import Panel from "@/components/Panel";
 export default {
-  data() {
-    return {
-      events: null
-    };
+  computed: mapGetters(["allEvents"]),
+  methods: {
+    ...mapActions(["fetchEvents"])
   },
   async mounted() {
-    this.events = (await EventsService.getAll()).data;
+    this.fetchEvents();
   },
-  // computed: mapGetters(["allEvents", "promoEvents"]),
-  // async mounted() {
-  //   this.axiosEvents();
-  // },
-  // methods: {
-  //   ...mapActions(["axiosEvents"])
-  // },
   components: {
     Panel
   }

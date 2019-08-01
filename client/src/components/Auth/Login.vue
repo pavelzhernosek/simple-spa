@@ -2,7 +2,7 @@
   <v-container>
     <v-layout class="login-field" justify-center>
       <v-flex xs12 sm8 lg6 xl4>
-        <panel title="Login field">
+        <panel class="text-uppercase" title="Login field">
           <v-flex>
             <v-form
               name="events-form"
@@ -43,7 +43,6 @@
 <script>
 import Panel from "@/components/Panel";
 import AuthenticationService from "@/services/AuthenticationService";
-import user from "../../store/modules/user";
 export default {
   data() {
     return {

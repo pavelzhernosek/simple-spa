@@ -7,6 +7,7 @@ import Orders from "@/components/User/Orders";
 import Events from "@/components/Events/Events";
 import Create from "@/components/Events/Create";
 import Event from "@/components/Events/Event";
+import Profile from "@/components/User/Profile";
 
 Vue.use(Router);
 export default new Router({
@@ -45,6 +46,11 @@ export default new Router({
       path: "/events/:id",
       name: "event",
       component: Event
+    },
+    {
+      path: "/profile/id",
+      name: "profile",
+      component: Profile
     }
   ],
   mode: "history"
