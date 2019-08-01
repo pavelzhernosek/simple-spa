@@ -30,7 +30,7 @@
             </v-form>
             <div class="error--text">{{ error }}</div>
             <br />
-            <v-btn color="primary" @click="login" :disabled="!valid">
+            <v-btn @click="login" :disabled="!valid">
               Login
             </v-btn>
           </v-flex>

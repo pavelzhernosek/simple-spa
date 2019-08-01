@@ -5,15 +5,15 @@ const eventSchema = new Schema({
     type: String,
     required: true
   },
-  user: {
+  user_id: {
     type: String,
     required: true
   },
   start_time: {
-    type: Date
+    type: String
   },
   start_date: {
-    type: Date
+    type: String
   },
   category: {
     ref: "categories",

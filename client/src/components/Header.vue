@@ -2,9 +2,12 @@
   <div>
     <v-app-bar app clipped-left>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <span class="title ml-3 mr-5 headline text-uppercase"
-        >Events&nbsp;<span class="font-weight-light">App</span></span
-      >
+      <router-link to="/" tag="span" class="pointer">
+        <span class="title ml-3 mr-5 headline text-uppercase"
+          >Events&nbsp;<span class="font-weight-light">App</span></span
+        >
+      </router-link>
+
       <v-spacer></v-spacer>
       <v-text-field
         style="max-width: 400px"

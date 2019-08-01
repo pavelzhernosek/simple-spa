@@ -24,20 +24,18 @@
                 prepend-icon="mdi-file-image"
                 placeholder="Image url"
                 :rules="[v => !!v || 'Image url is required']"
+                v-model="event.image"
               >
               </v-text-field>
             </v-flex>
             <v-flex xs6>
-              <v-select
-                v-model="event.category"
-                :items="items"
-                label="Categories"
-              ></v-select>
+              <v-select :items="items" label="Categories"></v-select>
             </v-flex>
             <v-flex xs12>
               <v-text-field
                 prepend-icon="mdi-message-text-outline"
                 placeholder="Description"
+                v-model="event.description"
               ></v-text-field>
             </v-flex>
             <v-flex xs6>
@@ -53,11 +51,11 @@
               >
                 <template v-slot:activator="{ on }">
                   <v-text-field
-                    v-model="dateFormatted"
+                    v-model="event.start_date"
                     label="Date"
                     persistent-hint
                     prepend-icon="mdi-calendar"
-                    @blur="date = parseDate(dateFormatted)"
+                    @blur="date = parseDate(event.start_date)"
                     v-on="on"
                   ></v-text-field>
                 </template>
@@ -74,7 +72,7 @@
                 v-model="timePicker"
                 :close-on-content-click="false"
                 :nudge-right="40"
-                :return-value.sync="time"
+                :return-value.sync="event.start_time"
                 transition="scale-transition"
                 offset-y
                 full-width
@@ -83,7 +81,7 @@
               >
                 <template v-slot:activator="{ on }">
                   <v-text-field
-                    v-model="time"
+                    v-model="event.start_time"
                     label="Time"
                     prepend-icon="mdi-clock"
                     readonly
@@ -91,10 +89,10 @@
                   ></v-text-field>
                 </template>
                 <v-time-picker
-                  v-model="time"
+                  v-model="event.start_time"
                   format="24hr"
                   full-width
-                  @click:minute="$refs.timePicker.save(time)"
+                  @click:minute="$refs.timePicker.save(event.start_time)"
                 ></v-time-picker>
               </v-dialog>
             </v-flex>
@@ -102,8 +100,8 @@
         </v-container>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn text color="primary" @click="dialog = false">Cancel</v-btn>
-          <v-btn text @click="dialog = false">Save</v-btn>
+          <v-btn text color="primary" @click="dialog = false">Cancel </v-btn>
+          <v-btn text @click="create">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -116,22 +114,25 @@ export default {
   data: vm => ({
     date: new Date().toISOString().substr(0, 10),
     time: null,
-    dateFormatted: vm.formatDate(new Date().toISOString().substr(0, 10)),
     datePicker: false,
     timePicker: false,
     events: null,
+    items: [
+      "Seminars and Conferences",
+      "Trade Shows",
+      "Executive Retreats and Incentive Programs"
+    ],
     dialog: false,
     valid: false,
     event: {
       title: null,
-      author_id: null,
       start_time: null,
-      start_date: null,
+      start_date: vm.formatDate(new Date().toISOString().substr(0, 10)),
       description: null,
-      category: [],
+      user_id: "5d40ba5a89bfc606d88abfa9",
       promo: null,
       image: null,
-      location: null,
+      location: "Minsk",
       cost: null,
       is_free: null
     }
@@ -144,7 +145,7 @@ export default {
   },
   watch: {
     date(val) {
-      this.dateFormatted = this.formatDate(this.date);
+      this.event.start_date = this.formatDate(this.date);
     }
   },
   methods: {
@@ -152,40 +153,27 @@ export default {
       if (!date) return null;
 
       const [year, month, day] = date.split("-");
-      return `${month}/${day}/${year}`;
+      return `${month}-${day}-${year}`;
     },
     parseDate(date) {
       if (!date) return null;
 
-      const [month, day, year] = date.split("/");
+      const [month, day, year] = date.split("-");
       return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+    },
+    async create() {
+      try {
+        this.dialog = false;
+        await EventsService.create(this.event);
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 };
 </script>
 
-<style scoped>
-.event-title {
-  font-size: 30px;
-}
-
-.event-description {
-  padding-top: 10px;
-  text-align: left;
-  font-size: 16px;
-}
-
-.event-location {
-  font-size: 24px;
-}
-
-.event-image {
-  width: 100%;
-  max-height: 300px;
-  margin: 0 auto;
-  object-fit: cover;
-}
-</style>
+<style scoped></style>
 
 <!--<v-layout class="mt-5" justify-center>-->
 <!--  <v-flex xs12 lg10>-->
